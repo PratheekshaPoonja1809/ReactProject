@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { Articles } from "./Articles";
+import Modal from "./Modal";
+import { useModal } from "./useModal";
 
 function App() {
+  const [id, setId]: [string, (id: string) => void] = useState<string>("");
+  const { isOpen, showModal } = useModal();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Articles showModal={showModal} setId={setId} />
+      {id && (
+        <Modal
+          isOpen={isOpen}
+          toggleModal={showModal}
+          id={id}
+          setId={setId}
+        ></Modal>
+      )}
     </div>
   );
 }
