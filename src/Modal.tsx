@@ -12,7 +12,6 @@ interface IModalType {
   summary?: string;
   fullText?: string;
   isOpen: boolean;
-  setId: (id: string) => void;
   toggleModal: () => void;
 }
 
@@ -35,7 +34,7 @@ export default function Modal(props: IModalType) {
   useEffect(() => {
     const getFullSummary = async () => {
       try {
-        const { data } = await axios.get(`${Constant.ARTICLE_URL}/${props.id}`);
+        let { data } = await axios.get(`${Constant.ARTICLE_URL}/${props.id}`);
         setDetails(data);
         setError("");
       } catch (err: any) {

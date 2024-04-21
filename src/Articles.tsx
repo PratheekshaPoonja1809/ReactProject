@@ -14,7 +14,7 @@ interface IArticleProp {
   id?: string;
   title?: string;
   summary?: string;
-  showModal: any;
+  showModal: ()=>void;
   setId: (id: string) => void;
 }
 

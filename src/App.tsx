@@ -16,7 +16,6 @@ function App() {
           isOpen={isOpen}
           toggleModal={showModal}
           id={id}
-          setId={setId}
         ></Modal>
       )}
     </div>
